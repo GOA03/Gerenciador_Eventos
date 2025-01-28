@@ -108,13 +108,5 @@ public class TelaInscricoesParticipante extends JFrame {
 	    } catch (IOException e) {
 	        JOptionPane.showMessageDialog(this, "Erro de I/O: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 	    }
-	    finally {
-	    	try {
-				BancoDados.desconectar();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    }
 	}
 }
