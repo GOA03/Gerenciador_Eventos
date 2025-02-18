@@ -8,7 +8,7 @@ public class TelaLogin extends JFrame {
     private static final long serialVersionUID = 1L;
     private JTextField textField;
     private JPasswordField passwordField;
-    private LoginService loginService; // Adiciona LoginService
+    private LoginService loginService;
 
     public TelaLogin() {
         loginService = new LoginService(); // Inicializa o LoginService
@@ -92,7 +92,7 @@ public class TelaLogin extends JFrame {
     }
 
     private void abrirTelaCadastroParticipante() {
-        TelaCadastroParticipante telaCadastro = new TelaCadastroParticipante();
+        TelaCadastroParticipante telaCadastro = new TelaCadastroParticipante(null);
         telaCadastro.setVisible(true);
         dispose(); // Fecha a tela de login
     }

@@ -127,7 +127,7 @@ public class TelaRelatorioParticipacaoEventos extends JFrame {
 
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Salvar como");
-        fileChooser.setSelectedFile(new File("relatorio.xls"));
+        fileChooser.setSelectedFile(new File("relatorioEventosPassados.xls"));
         if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
             try (FileWriter fw = new FileWriter(fileChooser.getSelectedFile()); BufferedWriter bw = new BufferedWriter(fw)) {
                 for (int i = 0; i < model.getColumnCount(); i++) {

@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 
 import entities.Evento;
 import services.EventoService;
+import services.VerificadorEventosAbertos;
 
 public class TelaGerenciamentoEventosParticipante extends JFrame {
 
@@ -31,12 +32,17 @@ public class TelaGerenciamentoEventosParticipante extends JFrame {
     private JTable tableEventos;
     private DefaultTableModel model;
     private TelaPrincipalParticipante telaParticipante;
+    private VerificadorEventosAbertos verificadorEventos;
 
     public TelaGerenciamentoEventosParticipante(TelaPrincipalParticipante telaParticipante) throws IOException {
         this.telaParticipante = telaParticipante;
         configurarJanela();
         inicializarComponentes();
         carregarEventos();
+
+        // Iniciar o verificador de eventos
+        verificadorEventos = new VerificadorEventosAbertos(this);
+        verificadorEventos.start(); // Inicia a thread
     }
 
     private void configurarJanela() {
@@ -69,6 +75,7 @@ public class TelaGerenciamentoEventosParticipante extends JFrame {
             if (telaParticipante != null) {
                 telaParticipante.setVisible(true);
             }
+            verificadorEventos.parar(); // Para a thread ao fechar a tela
         });
 
         // Painel central para tabela e busca
@@ -90,9 +97,9 @@ public class TelaGerenciamentoEventosParticipante extends JFrame {
         // Tabela de eventos
         String[] colunas = {"ID", "Título", "Categoria", "Status"};
         model = new DefaultTableModel(colunas, 0) {
-			private static final long serialVersionUID = 1L;
+            private static final long serialVersionUID = 1L;
 
-			@Override
+            @Override
             public boolean isCellEditable(int row, int column) {
                 return false; // Torna todas as células não editáveis
             }
@@ -106,7 +113,6 @@ public class TelaGerenciamentoEventosParticipante extends JFrame {
         // Painel de Ações com botões centralizados e espaçamento adequado
         JPanel painelAcoes = new JPanel();
         painelAcoes.setLayout(new BoxLayout(painelAcoes, BoxLayout.Y_AXIS)); // Usando BoxLayout para espaçamento
-                                                                                // adequado
         painelAcoes.setAlignmentX(Component.CENTER_ALIGNMENT); // Centralizando o painel de ações
 
         // Criando novos botões para ações
@@ -207,6 +213,12 @@ public class TelaGerenciamentoEventosParticipante extends JFrame {
         tableEventos.getColumnModel().getColumn(0).setPreferredWidth(50); // Ajuste a largura para 50 pixels
         tableEventos.getColumnModel().getColumn(0).setMinWidth(30); // Define a largura mínima
         tableEventos.getColumnModel().getColumn(0).setMaxWidth(80); // Define a largura máxima
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        verificadorEventos.parar(); // Para a thread ao fechar a tela
     }
 
     public static void main(String[] args) throws IOException {

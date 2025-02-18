@@ -126,7 +126,7 @@ public class EventoDAO {
             if (rs.next()) {
                 return mapResultSetToEvento(rs); // Mapeia o ResultSet para um objeto Evento
             } else {
-                throw new SQLException("Evento não encontrado.");
+                throw new SQLException("Evento nao encontrado.");
             }
         }
     }

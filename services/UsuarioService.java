@@ -13,6 +13,7 @@ import dao.UsuarioDAO;
 import entities.Usuario;
 import userinterfaces.TelaCadastroAdmin;
 import userinterfaces.TelaCadastroParticipante;
+import userinterfaces.TelaGerenciamentoUsuarios;
 
 public class UsuarioService {
 
@@ -21,8 +22,10 @@ public class UsuarioService {
         telaCadastroAdmin.setVisible(true);
     }
 
-    public void abrirTelaCadastroParticipante() {
-        TelaCadastroParticipante telaCadastroParticipante = new TelaCadastroParticipante();
+    public void abrirTelaCadastroParticipante(TelaGerenciamentoUsuarios telaGerenciamentoUsuarios) {
+    	
+        TelaCadastroParticipante telaCadastroParticipante = new TelaCadastroParticipante(telaGerenciamentoUsuarios);
+        telaCadastroParticipante.setLogado(true);
         telaCadastroParticipante.setVisible(true);
     }
 
@@ -30,9 +33,9 @@ public class UsuarioService {
         Connection conn = null;
         List<Usuario> usuarios = new ArrayList<>();
         try {
-            conn = BancoDados.conectar(); // Ensure this method connects properly
+            conn = BancoDados.conectar();
             UsuarioDAO usuarioDAO = new UsuarioDAO(conn);
-            usuarios = usuarioDAO.listarUsuarios(); // Ensure this method returns a valid list
+            usuarios = usuarioDAO.listarUsuarios();
         } catch (SQLException e) {
             throw new SQLException("Erro ao listar usuários: " + e.getMessage(), e);
         } finally {
@@ -40,7 +43,7 @@ public class UsuarioService {
                 BancoDados.desconectar();
             }
         }
-        return usuarios; // Ensure this is not null
+        return usuarios;
     }
     
     public Usuario getUsuarioPorId(int usuarioId) throws SQLException, IOException {

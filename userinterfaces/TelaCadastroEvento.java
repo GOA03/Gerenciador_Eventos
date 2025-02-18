@@ -25,13 +25,13 @@ public class TelaCadastroEvento extends JFrame {
     private JTextField precoField;
     private JComboBox<String> categoriaComboBox; // ComboBox para selecionar a categoria
     private TelaGerenciamentoEventosAdmin telaGerenciamentoEventosAdmin;
-    private Administrador organizador; // Adicionando o organizador
+    private Administrador organizador; 
 
     public TelaCadastroEvento(TelaGerenciamentoEventosAdmin telaGerenciamentoEventosAdmin, Administrador organizador) {
         this.telaGerenciamentoEventosAdmin = telaGerenciamentoEventosAdmin;
         this.organizador = organizador; // Inicializando o organizador
         setTitle("Cadastro de Evento");
-        setSize(400, 500); // Aumentando a altura da tela
+        setSize(400, 500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new GridBagLayout());

@@ -68,13 +68,14 @@ public class TelaGerenciamentoUsuarios extends JFrame {
         JButton btnVoltar = new JButton("Voltar"); 
 
         painelAcoes.add(btnAdicionar);
-        painelAcoes.add(btnVerMais); 
+        painelAcoes.add(btnVerMais);
         painelAcoes.add(btnExcluir);
-        painelAcoes.add(btnVoltar); 
+        painelAcoes.add(btnVoltar);
         getContentPane().add(painelAcoes, BorderLayout.SOUTH);
 
         // Listeners dos botões
-        btnAdicionar.addActionListener(e -> usuarioService.abrirTelaCadastroParticipante());
+        btnAdicionar.addActionListener(e -> usuarioService.abrirTelaCadastroParticipante(this));
+        
         btnVerMais.addActionListener(e -> {
 			try {
 				verMaisUsuario();
@@ -83,6 +84,7 @@ public class TelaGerenciamentoUsuarios extends JFrame {
 				e1.printStackTrace();
 			}
 		}); // Action for Ver Mais button
+        
         btnExcluir.addActionListener(e -> {
             try {
                 excluirUsuario();

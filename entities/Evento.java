@@ -3,6 +3,7 @@ package entities;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 import enuns.CategoriaEvento;
 import enuns.StatusEvento;
@@ -117,6 +118,22 @@ public class Evento {
 	public void setParticipantes(List<Participante> participantes) {
 		this.participantes = participantes;
 	}
+	
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true; // Se for a mesma referência, são iguais
+        if (obj == null || getClass() != obj.getClass()) return false; // Se for nulo ou classe diferente, são diferentes
+
+        Evento evento = (Evento) obj;
+
+        // Comparação pelo ID, pois eventos com o mesmo ID devem ser considerados iguais
+        return this.id == evento.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id); // O hashCode será baseado apenas no ID
+    }
 
 	@Override
 	public String toString() {

@@ -39,7 +39,7 @@ public class TelaRelatorioEventosNaoOcorridos extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        JLabel titulo = new JLabel("Relatório de Eventos Não Ocorridos", SwingConstants.CENTER);
+        JLabel titulo = new JLabel("Relatório de Eventos Ainda Não Ocorridos", SwingConstants.CENTER);
         titulo.setFont(new Font("SansSerif", Font.BOLD, 20));
         add(titulo, BorderLayout.NORTH);
 

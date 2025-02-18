@@ -100,7 +100,7 @@ public class InscricaoDAO {
 
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             // Set the status to "ATIVA" as a string
-            stmt.setString(1, StatusInscricao.ATIVA.name()); // Use name() to get the string representation
+            stmt.setString(1, StatusInscricao.ATIVA.name());
             stmt.setInt(2, id);
             stmt.executeUpdate();
             return true; // Presença confirmada com sucesso
@@ -125,7 +125,7 @@ public class InscricaoDAO {
                 inscricao.setStatusInscricao(StatusInscricao.valueOf(rs.getString("status_inscricao")));
 
                 // Busca o evento associado à inscrição
-                int eventoId = rs.getInt("evento_id"); // Supondo que você tenha um campo evento_id na tabela inscricoes
+                int eventoId = rs.getInt("evento_id");
                 Evento evento = eventoDAO.buscarEventoPorId(eventoId); // Busca o evento pelo ID
                 inscricao.setEvento(evento); // Define o evento na inscrição
 

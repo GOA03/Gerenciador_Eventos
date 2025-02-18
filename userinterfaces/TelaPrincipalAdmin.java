@@ -118,7 +118,7 @@ public class TelaPrincipalAdmin extends JFrame {
 
         JMenuItem itemRelatorioParticipantes = new JMenuItem("Relatório de Participantes");
         JMenuItem itemEventosPopulares = new JMenuItem("Eventos Mais Populares");
-        JMenuItem itemEventosNaoOcorridos = new JMenuItem("Eventos Não Ocorridos");
+        JMenuItem itemEventosNaoOcorridos = new JMenuItem("Eventos Ainda Não Ocorridos");
         JMenuItem itemRelatorioDetalhado = new JMenuItem("Relatório Detalhado de Evento");
 
         // Ação do item "Relatório de Participantes"

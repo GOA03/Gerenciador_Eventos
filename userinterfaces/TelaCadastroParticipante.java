@@ -18,9 +18,13 @@ public class TelaCadastroParticipante extends JFrame {
     private JTextField dataNascimentoField;
     private JTextField cpfField;
     private CadastroParticipanteService cadastroParticipanteService;
+    private boolean logado;
+	private TelaGerenciamentoUsuarios telaGerenciamentoUsuarios;
 
-    public TelaCadastroParticipante() {
+    public TelaCadastroParticipante(TelaGerenciamentoUsuarios telaGerenciamentoUsuarios) {
+    	this.telaGerenciamentoUsuarios = telaGerenciamentoUsuarios;
         cadastroParticipanteService = new CadastroParticipanteService();
+        this.logado = false;
         setTitle("Cadastro de Participante");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -135,8 +139,12 @@ public class TelaCadastroParticipante extends JFrame {
             }
             if (sucesso) {
                 JOptionPane.showMessageDialog(this, "Participante cadastrado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
-                new TelaLogin().setVisible(true);
                 dispose();
+                if (logado == false) {
+                	new TelaLogin().setVisible(true);
+                } else if (telaGerenciamentoUsuarios != null) {
+                	telaGerenciamentoUsuarios.carregarUsuarios();
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao cadastrar participante.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -186,7 +194,14 @@ public class TelaCadastroParticipante extends JFrame {
     }
 
     private void voltarParaLogin() {
-        new TelaLogin().setVisible(true);
+    	if (logado == false) {
+        	new TelaLogin().setVisible(true);
+        }
         dispose(); // Fecha a tela atual
     }
+
+	public void setLogado(boolean logado) {
+		this.logado = logado;
+	}
+    
 }

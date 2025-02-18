@@ -45,7 +45,7 @@ public class TelaEventoDetalhadoAdmin extends JFrame {
     private int eventoId;
     private JTextField tituloField, dataField, horaField, localField, duracaoField, capacidadeField, precoField;
     private JTextArea descricaoArea;
-    private JComboBox<String> categoriaComboBox, statusComboBox; // Added statusComboBox
+    private JComboBox<String> categoriaComboBox, statusComboBox; 
     private Evento evento;
     private JTable tabelaParticipantes;
 
@@ -89,7 +89,6 @@ public class TelaEventoDetalhadoAdmin extends JFrame {
             DefaultTableModel model = (DefaultTableModel) tabelaParticipantes.getModel();
             model.setRowCount(0); // Limpa a tabela antes de adicionar novos dados
 
-            System.out.println(inscricoes);
             for (Inscricao inscricao : inscricoes) {
                 String nomeParticipante = inscricao.getParticipante().getNomeCompleto(); // Obtém o nome do participante
                 String statusInscricao = inscricao.getStatusInscricao().name(); // Obtém o status da inscrição
