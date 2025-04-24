@@ -1,110 +1,111 @@
 # Sistema de Gerenciamento de Eventos
 
-Este projeto é um sistema de gerenciamento de eventos que permite aos usuários se cadastrarem, realizarem login e gerenciarem seus eventos inscritos. O sistema foi desenvolvido em **Java**, utilizando **JDBC** para interação com o banco de dados **MySQL**, e conta com uma interface gráfica desenvolvida com **WindowBuilder**.
+Este projeto é um sistema de gerenciamento de eventos que permite aos usuários se cadastrarem, realizarem login e gerenciarem seus eventos. O sistema foi desenvolvido em **Java**, utilizando **JDBC** para interação com o banco de dados **MySQL**, e conta com uma interface gráfica desenvolvida com **WindowBuilder**.
 
-# DESCRIÇÃO DO PROJETO
+## Descrição do Projeto
 
 O Sistema de Gerenciamento de Eventos é uma aplicação desenvolvida para permitir que administradores gerenciem eventos como palestras, workshops, conferências e outros tipos de encontros. O sistema também possibilita que participantes visualizem eventos disponíveis, realizem inscrições e acompanhem suas participações.
 
-## Módulo de Cadastro de Usuários
+### Módulos do Sistema
+
+#### 1. Módulo de Cadastro de Usuários
 Responsável pelo cadastro e autenticação de usuários. Existem dois tipos de usuários: administradores e participantes.
 
-### Funcionalidades:
-- Cadastro de novos usuários com validação de dados;
-- Login e autenticação;
+##### Funcionalidades:
+- Cadastro de novos usuários com validação de dados.
+- Login e autenticação.
 - Diferença de permissões baseada no tipo de usuário.
 
-### Dados Necessários:
-- **Administradores**: id, nome completo, e-mail, senha, tipo de usuário (administrador ou participante), cargo e data da contratação;
+##### Dados Necessários:
+- **Administradores**: id, nome completo, e-mail, senha, tipo de usuário (administrador ou participante), cargo e data da contratação.
 - **Participantes**: id, nome completo, e-mail, senha, tipo de usuário (administrador ou participante), data de nascimento e CPF.
 
-### Regras:
+##### Regras:
 - O e-mail deve ser único para cada usuário.
 - Administradores e Participantes devem ter acessos diferenciados.
 
-## Módulo Gerenciamento de Eventos
+#### 2. Módulo Gerenciamento de Eventos
 Permite que administradores criem, atualizem, visualizem e excluam eventos.
 
-### Funcionalidades:
-- CRUD de eventos;
-- Listagem de eventos abertos, encerrados ou cancelados;
-- Modificar o status de um determinado evento (fechado, aberto, encerrado ou cancelado);
+##### Funcionalidades:
+- CRUD de eventos.
+- Listagem de eventos abertos, encerrados ou cancelados.
+- Modificar o status de um evento (fechado, aberto, encerrado ou cancelado).
 - Controle da capacidade máxima de participantes.
 
-### Dados Necessários:
+##### Dados Necessários:
 - **Eventos**: id, título, descrição, data e hora, duração (em horas), local (endereço ou link se o evento for online), capacidade máxima de participantes, status (fechado, aberto, encerrado ou cancelado), categoria (palestra, workshop ou conferência), preço (se o evento for pago), organizador (referência ao administrador responsável).
 
-### Regras:
+##### Regras:
 - Ao criar um novo evento, este iniciará como status “fechado”.
 
-## Módulo de Inscrições
+#### 3. Módulo de Inscrições
 Permite que participantes se inscrevam em eventos disponíveis e acompanhem suas inscrições.
 
-### Funcionalidades:
-- Inscrição em eventos com controle de capacidade;
-- Cancelamento de inscrição;
+##### Funcionalidades:
+- Inscrição em eventos com controle de capacidade.
+- Cancelamento de inscrição.
 - Confirmação de presença.
 
-### Dados Necessários:
+##### Dados Necessários:
 Para cada inscrição de um participante em um evento, deve-se armazenar:
-- Data da inscrição;
-- Status da inscrição (ativa, cancelada ou pendente de pagamento);
+- Data da inscrição.
+- Status da inscrição (ativa, cancelada ou pendente de pagamento).
 - Presença confirmada (sim ou não).
 
-### Regras:
+##### Regras:
 - A capacidade máxima do evento não pode ser ultrapassada.
 - As inscrições só poderão ser realizadas pelos participantes quando o status do evento estiver como “aberto”.
 - O cancelamento da inscrição em um evento só poderá ser realizado pelo participante enquanto o status do evento estiver como “aberto” e antes do evento iniciar.
 
-## Módulo Relatórios (administradores)
+#### 4. Módulo Relatórios (Administradores)
 Usado por administradores para gerar relatórios e obter informações sobre eventos e participações.
 
-### Funcionalidades:
-- Relatório dos participantes que participaram de um determinado evento;
-- Eventos mais populares (maior número de inscrições);
-- Lista de todos os eventos que ainda não ocorreram, mostrando a capacidade restante de cada evento;
+##### Funcionalidades:
+- Relatório dos participantes que participaram de um determinado evento.
+- Eventos mais populares (maior número de inscrições).
+- Lista de todos os eventos que ainda não ocorreram, mostrando a capacidade restante de cada evento.
 - Relatório detalhado de um determinado evento que ainda não ocorreu, mostrando os detalhes do evento, participantes inscritos e status de cada inscrição (ativas, canceladas, pendentes).
 
-## Módulo Relatórios (participantes)
+#### 5. Módulo Relatórios (Participantes)
 Usado por participantes para gerar relatórios e obter informações sobre os eventos que está inscrito ou participou.
 
-### Funcionalidades:
+##### Funcionalidades:
 - **Exportação**:
-  - Listagem de eventos inscritos com todos os detalhes de cada evento;
+  - Listagem de eventos inscritos com todos os detalhes de cada evento.
   - Histórico de participação em eventos passados, contendo todos os detalhes de cada evento.
 
-### Observações:
-Tanto um administrador quanto um participante podem exportar os relatórios citados anteriormente em um arquivo (por exemplo, `.xls`) que será armazenado em disco.
-
+##### Observações:
+Tanto administradores quanto participantes podem exportar os relatórios citados anteriormente em um arquivo (por exemplo, `.xls`) que será armazenado em disco.
 
 ## Funcionalidades Principais
 
-1. **Cadastro de Usuários**
-   - Usuários podem se cadastrar com **nome**, **email**, **senha** e demais dados opcionais.
+1. **Cadastro de Usuários**:
+   - Usuários podem se cadastrar com **nome**, **email**, **senha** e dados opcionais.
    - Validação de dados de entrada.
 
-2. **Login de Usuários**
-   - Autenticação por email e senha.
+2. **Login de Usuários**:
+   - Autenticação por e-mail e senha.
 
-3. **Gerenciamento de Eventos**
+3. **Gerenciamento de Eventos**:
    - Criar, editar, visualizar e excluir eventos.
    - Cada evento possui data/hora, duração, local, capacidade máxima, status, categoria e preço.
 
-4. **Inscrição em Eventos**
+4. **Inscrição em Eventos**:
    - Usuários participantes podem se inscrever nos eventos disponíveis.
    - Status da inscrição: ativa, cancelada ou pendente.
 
-5. **CRUD de Usuários (Admin)**
+5. **CRUD de Usuários (Admin)**:
    - O **administrador** pode criar, editar, visualizar e excluir usuários.
 
-6. **CRUD de Eventos (Admin)**
+6. **CRUD de Eventos (Admin)**:
    - O **administrador** pode criar, editar, visualizar e excluir eventos.
 
-7. **Relatórios de Eventos e Inscrições**
+7. **Relatórios de Eventos e Inscrições**:
    - Tanto usuários comuns quanto administradores podem gerar relatórios.
    - Os relatórios podem incluir detalhes de inscrições, eventos passados e futuros.
 
-8. **Interface Gráfica**
+8. **Interface Gráfica**:
    - Desenvolvida com **WindowBuilder**.
    - Telas para cadastro, login, gerenciamento de eventos e inscrições.
 
