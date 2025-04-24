@@ -123,7 +123,3 @@ ALTER TABLE inscricoes
 
 COMMIT;
 ```
-
----
-
-Caso deseje expandir esse projeto com autenticação JWT, API REST com Spring Boot ou front-end em Angular, basta solicitar! 🚀
