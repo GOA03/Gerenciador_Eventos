@@ -1,7 +1,6 @@
-
 # Sistema de Gerenciamento de Eventos
 
-Este projeto é um sistema de gerenciamento de eventos que permite aos usuários se cadastrarem, realizarem login e gerenciarem seus próprios eventos. O sistema foi desenvolvido em **Java**, utilizando **JDBC** para interação com o banco de dados **MySQL**, e conta com uma interface gráfica desenvolvida com **WindowBuilder**.
+Este projeto é um sistema de gerenciamento de eventos que permite aos usuários se cadastrarem, realizarem login e gerenciarem seus eventos inscritos. O sistema foi desenvolvido em **Java**, utilizando **JDBC** para interação com o banco de dados **MySQL**, e conta com uma interface gráfica desenvolvida com **WindowBuilder**.
 
 ## Funcionalidades Principais
 
@@ -20,9 +19,19 @@ Este projeto é um sistema de gerenciamento de eventos que permite aos usuários
    - Usuários participantes podem se inscrever nos eventos disponíveis.
    - Status da inscrição: ativa, cancelada ou pendente.
 
-5. **Interface Gráfica**
+5. **CRUD de Usuários (Admin)**
+   - O **administrador** pode criar, editar, visualizar e excluir usuários.
+
+6. **CRUD de Eventos (Admin)**
+   - O **administrador** pode criar, editar, visualizar e excluir eventos.
+
+7. **Relatórios de Eventos e Inscrições**
+   - Tanto usuários comuns quanto administradores podem gerar relatórios.
+   - Os relatórios podem incluir detalhes de inscrições, eventos passados e futuros.
+
+8. **Interface Gráfica**
    - Desenvolvida com **WindowBuilder**.
-   - Telas para cadastro, login, gerenciamento de eventos e visualização.
+   - Telas para cadastro, login, gerenciamento de eventos e inscrições.
 
 ## Tecnologias Utilizadas
 
